@@ -20,7 +20,7 @@ export default function Sidebar({ menu, userName, onToggle }: SidebarProps) {
   return (
     <aside className={styles.sidebar}>
       <header className={styles.header}>
-        <Image src="/logo.png" alt="logo" width={28} height={28} priority />
+        <Image src="/aurorah.svg" alt="logo" width={28} height={28} priority />
         <button
           aria-label="Toggle sidebar"
           className={styles.btnIcon}

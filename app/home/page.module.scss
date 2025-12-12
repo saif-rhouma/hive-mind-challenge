@@ -61,8 +61,6 @@
     .card {
       // (Depth 3)
       @extend %card-style-base;
-      @extend %flex-center;
-      flex-direction: column;
       backdrop-filter: blur(8px);
 
       @media (max-width: $breakpoint-sm) {
