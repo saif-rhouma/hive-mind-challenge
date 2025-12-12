@@ -72,37 +72,36 @@
 
                 &:hover {
                     color: $color-primary;
-
-                    &::after {
-                        content: attr(data-label);
-                        position: absolute;
-                        left: 110%;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        white-space: nowrap;
-                        background: $color-primary;
-                        color: $color-text;
-                        padding: $spacing-sm;
-                        border-radius: $radius-sm;
-                        font-size: $font-size-sm;
-                        opacity: 1;
-                        pointer-events: none;
-                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-                        z-index: 10000;
-                    }
                 }
 
                 @media (max-width: $breakpoint-lg) {
                     justify-content: center;
 
+                    &:hover {
+                        &::after {
+                            content: attr(data-label);
+                            position: absolute;
+                            left: 110%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            white-space: nowrap;
+                            background: $color-primary;
+                            color: $color-text;
+                            padding: $spacing-sm;
+                            border-radius: $radius-sm;
+                            font-size: $font-size-sm;
+                            opacity: 1;
+                            pointer-events: none;
+                            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                            z-index: 10;
+                        }
+                    }
+
                     span {
                         display: none;
                     }
                 }
-
-
             }
-
 
         }
     }
