@@ -1,0 +1,57 @@
+// ============================================
+// Variables
+// ============================================
+$color-bg: #282828;
+$color-card: #282828;
+$color-border: #6e6e6e;
+$color-primary: #317878;
+$color-secondary: #0688d4;
+$color-text: #eaeaea;
+$color-text-muted: #a0a0a0;
+
+// Validation & State Colors
+$color-success: #06b6d4;
+$color-error: #e94560;
+
+// Text Sizes
+$font-size-xs: 0.7rem; // 14px
+$font-size-sm: 0.875rem; // 14px
+$font-size-md: 1rem; // 16px (default)
+$font-size-lg: 1.125rem; // 18px
+$font-size-xl: 1.25rem; // 20px
+$font-size-xxl: 1.5rem; // 24px
+
+
+$font-weight-light: 300;
+$font-weight-regular: 400; // (default)
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-sm-md: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 48px;
+
+$radius-sx: 4px;
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 24px;
+$radius-xl: 48px;
+
+// Layout
+$sidebar-width: 260px;
+
+// Breakpoints
+$breakpoint-lg: 991px; // large size
+$breakpoint-md: 767px; // medium size
+$breakpoint-sm: 575px; // small size
+
+// Card Sizes
+$card-sm: 320px;
+$card-md: 420px;
+$card-lg: 560px;
+$card-xxl: 720px;

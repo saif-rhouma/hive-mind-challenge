@@ -1,0 +1,163 @@
+@import "@/styles/core/variables";
+@import "@/styles/core/placeholders";
+@import "@/styles/core/utilities";
+@import "@/styles/core/forms";
+@import "@/styles/components/buttons";
+@import "@/styles/components/card";
+
+// ============================================
+// Component: Auth Page Layout
+// ============================================
+// HTML Structure:
+// .layout (Depth 1)
+//   .main (Depth 2)
+//     .card (Depth 3)
+//       .header (Depth 4)
+//       .divider (Depth 4)
+//       .socialLogin (Depth 4)
+//       .signupLink (Depth 4)
+//          a (Depth 5)
+//       .footer (Depth 4)
+//     footer (Depth 3)
+//       .btnIcon (Depth 4)
+//
+// Notes:
+// - Sidebar is a separate component and not included here.
+// - Buttons use core/components/_buttons.scss utilities.
+// - Form elements are handled in core/_forms.scss.
+// ============================================
+
+.layout {
+  // (Depth 1)
+  display: grid;
+  grid-template-columns: $sidebar-width 1fr;
+  min-height: 100vh;
+
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: auto 1fr;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+
+  .main {
+    // (Depth 2)
+    @extend %flex-center;
+    flex-direction: column;
+    padding: $spacing-xl;
+
+    /* background image */
+    background-image: url("/images/bg-img.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 400px rgba(0, 0, 0, 0.9) inset; // Vignette Effect
+    position: relative;
+
+
+
+    .card {
+      // (Depth 3)
+      @extend %card-style-base;
+      @extend %flex-center;
+      flex-direction: column;
+      backdrop-filter: blur(8px);
+
+      @media (max-width: $breakpoint-sm) {
+        min-width: 280px;
+        padding: $spacing-lg;
+      }
+
+      .header {
+        // (Depth 4)
+        margin-bottom: $spacing-lg;
+        text-align: center;
+
+        @media (max-width: $breakpoint-sm) {
+          margin-top: $spacing-md;
+          font-size: $font-size-sm;
+        }
+      }
+
+      .divider {
+        // (Depth 4)
+        @extend %flex-center;
+        text-align: center;
+        margin: $spacing-lg 0;
+        position: relative;
+        color: $color-text-muted;
+        font-size: $font-size-sm;
+
+        &::before,
+        &::after {
+          content: '';
+          flex: 1;
+          height: 1px;
+          background: rgba($color-border, 0.6);
+        }
+
+        &::before {
+          margin-right: $spacing-md;
+        }
+
+        &::after {
+          margin-left: $spacing-md;
+        }
+
+      }
+
+      .socialLogin {
+        // (Depth 4)
+        @extend %flex-center;
+        flex-direction: row;
+        gap: $spacing-md;
+
+        @media (max-width: $breakpoint-sm) {
+          width: 100%;
+          flex-direction: column;
+          gap: $spacing-sm;
+        }
+
+      }
+
+      .signupLink {
+        // (Depth 4)
+        margin: $spacing-lg 0;
+        text-align: center;
+
+        a {
+          // (Depth 5)
+          color: rgba($color-text, 0.85);
+          text-decoration: none;
+          font-weight: bolder;
+          transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+          &:hover {
+            color: $color-text;
+          }
+        }
+      }
+
+
+      .footer {
+        // (Depth 4)
+        text-align: center;
+      }
+    }
+
+    footer {
+      .btnIcon {
+        border-radius: $radius-xl;
+        padding: $spacing-sm $spacing-sm;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        bottom: $spacing-lg;
+        right: $spacing-lg;
+        background: linear-gradient(330deg, $color-primary 0%, lighten($color-primary, 10%) 100%);
+      }
+    }
+  }
+}

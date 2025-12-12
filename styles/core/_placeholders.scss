@@ -1,0 +1,42 @@
+// ============================================
+// Placeholder Selectors (for @extend)
+// ============================================
+%flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%text-style-base {
+    color: $color-text;
+    font-size: $font-size-md;
+    font-weight: $font-weight-regular;
+}
+
+%button-base {
+    padding: $spacing-sm $spacing-sm;
+    background: none;
+    border: none;
+    border-radius: $radius-sm;
+    color: $color-text;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+%card-style-base {
+    background-color: rgba($color-card, 0.8);
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    padding: $spacing-xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}

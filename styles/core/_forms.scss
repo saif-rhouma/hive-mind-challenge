@@ -1,0 +1,30 @@
+// ============================================
+// Core: Forms Utilities
+// ============================================
+.form {
+    @extend %flex-center;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: $spacing-md 0;
+    width: 100%;
+
+    @media (max-width: $breakpoint-sm) {
+        padding: 0 0;
+    }
+
+}
+
+.formGroup {
+    width: 100%;
+}
+
+.formRow {
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-md;
+    width: 100%;
+
+    @media (max-width: $breakpoint-sm) {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,62 @@
+@import "@/styles/core/variables";
+@import "@/styles/core/placeholders";
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    input {
+        @extend %text-style-base;
+        background: rgba($color-card, 1);
+        border: 1px solid rgba($color-border, 0.7);
+        border-radius: $radius-sx;
+        padding: $spacing-sm-md $spacing-sm-md 6px $spacing-sm-md; // ! this should change!!!
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-block;
+        outline: none;
+        backdrop-filter: blur(10px);
+
+        &::placeholder {
+            color: transparent;
+        }
+
+        &:focus,
+        &:valid {
+            border-color: $color-primary;
+            background: rgba($color-primary, 0.2);
+            box-shadow: 0 8px 25px rgba($color-primary, 0.2);
+        }
+
+        &:focus+label,
+        &:valid+label {
+            color: $color-primary;
+            font-weight: $font-weight-medium;
+            transform: translateY(-10px) scale(0.7);
+        }
+
+        &:invalid:not(:focus):not(:placeholder-shown) {
+            border-color: $color-error;
+            background: rgba($color-error, 0.1);
+            box-shadow: 0 8px 25px rgba($color-error, 0.2);
+        }
+
+        &:invalid:not(:focus):not(:placeholder-shown)+label {
+            color: $color-error;
+            font-weight: $font-weight-medium;
+            transform: translateY(-10px) scale(0.7);
+        }
+    }
+
+    label {
+        @extend %text-style-base;
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        color: $color-text-muted;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        transform-origin: left top;
+
+    }
+}
