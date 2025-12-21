@@ -8,10 +8,9 @@ interface GenericIconProps extends IconProps {
 export const Icon: React.FC<GenericIconProps> = ({
   name,
   size = 16,
-  color = 'currentColor',
   ...props
 }) => {
   const Svg = Icons[name];
   if (!Svg) return null;
-  return <Svg size={size} color={color} {...props} />;
+  return <Svg size={size} {...props} />;
 };

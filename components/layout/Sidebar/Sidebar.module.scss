@@ -5,16 +5,75 @@
 // ============================================
 // Component: Sidebar
 // ============================================
+//
 // HTML Structure:
+//
+// (Outside Sidebar)
+//   .mobileHeader (Depth 1)
+//     .btnIcon (Depth 2)
+//     .mobileTitle (Depth 2)
+//
+//   .overlay (Depth 1)
+//
 // .sidebar (Depth 1)
 //   .header (Depth 2)
 //     .btnIcon (Depth 3)
+//
 //   .nav (Depth 2)
 //     .menu (Depth 3)
-//         .item (Depth 4 )
+//       li
+//         .item (Depth 4)
+//
 //   footer (Depth 2)
 //     .btnSetting (Depth 3)
+//
 // ============================================
+
+.mobileHeader {
+    // (Depth 1)
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $sidebar-height-header-mobile;
+    padding: $spacing-sm-md $spacing-lg;
+    background-color: $color-bg;
+    border-bottom: 1px solid;
+    border-color: rgba($color-border, 0.2);
+    z-index: 10;
+
+    @media (max-width: $breakpoint-sm) {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+    }
+
+    .mobileTitle {
+        // (Depth 2)
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+    }
+}
+
+.overlay {
+    // (Depth 1)
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 5;
+    opacity: 0;
+    animation: fadeIn 0.2s ease forwards;
+
+    @media (min-width: $breakpoint-sm) {
+        display: none;
+    }
+}
+
 .sidebar {
     // (Depth 1)
     display: flex;
@@ -22,20 +81,150 @@
     background-color: $color-bg;
     width: $sidebar-width;
     height: 100vh;
-    padding: $spacing-lg;
+    padding: $spacing-sm-md $spacing-lg;
     color: $color-text;
     font-size: $font-size-md;
     border-right: 1px solid;
     border-color: rgba($color-border, 0.2);
+    transition: width 0.3s ease, padding 0.3s ease;
 
-
-    @media (max-width: $breakpoint-lg) {
-        width: 80px;
-    }
 
     @media (max-width: $breakpoint-sm) {
-        display: none;
-        ;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 5;
+        width: $sidebar-width;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+
+    }
+
+    &.collapsed {
+        // (Depth 2)
+        display: flex;
+        align-items: center;
+        width: $sidebar-width-collapsed;
+
+        @media (max-width: $breakpoint-sm) {
+            width: $sidebar-width;
+        }
+
+
+        .header {
+            // (Depth 3)
+            justify-content: center;
+
+            .btnIcon {
+                // (Depth 4)
+
+                > :first-child {
+                    display: inline-block;
+                    transition: opacity 0.3s;
+                }
+
+                > :last-child {
+                    opacity: 0;
+                    position: absolute;
+                    transition: opacity 0.3s;
+                }
+
+                &:hover> :first-child {
+                    opacity: 0;
+                }
+
+                &:hover> :last-child {
+                    opacity: 1;
+                }
+            }
+
+        }
+
+        .nav {
+            // (Depth 3)
+
+            .item {
+                // (Depth 4)
+                justify-content: center;
+
+                &:hover {
+                    &::after {
+                        content: attr(data-label);
+                        position: absolute;
+                        left: 200%;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        white-space: nowrap;
+                        background: $color-primary;
+                        color: $color-text;
+                        padding: $spacing-sm;
+                        border-radius: $radius-sm;
+                        font-size: $font-size-sm;
+                        opacity: 1;
+                        pointer-events: none;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                        z-index: 100;
+                    }
+                }
+
+                span {
+                    // (Depth 5)
+                    display: none;
+                }
+
+            }
+
+
+        }
+
+        footer {
+
+            // (Depth 2)
+            .btnSetting {
+                // (Depth 3)
+                justify-content: center;
+                padding: $spacing-xs;
+
+                span {
+                    // (Depth 4)
+                    display: none;
+                }
+
+            }
+        }
+
+    }
+
+    &.mobileOpen {
+        // (Depth 2)
+        transform: translateX(0);
+
+        .header {
+            // (Depth 3)
+            display: none;
+        }
+
+        nav {
+            // (Depth 3)
+            margin-top: $sidebar-height-header-mobile;
+        }
+
+        footer {
+
+            // (Depth 3)
+            .btnSetting {
+                // (Depth 4)
+                justify-content: flex-start;
+                padding: $spacing-sm;
+
+                span {
+                    // (Depth 5)
+                    display: flex;
+                }
+
+            }
+        }
     }
 
     .header {
@@ -43,9 +232,20 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
 
-        @media (max-width: $breakpoint-lg) {
-            .btnIcon {
+        .btnIcon {
+            // (Depth 3)
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background-color: lighten($color-bg, 5%);
+            }
+
+            >:first-child {
                 display: none;
             }
         }
@@ -55,6 +255,7 @@
         // (Depth 2)
         margin-top: $spacing-md;
         flex: 1;
+        transition: max-height 0.3s ease, opacity 0.2s ease;
 
         .menu {
             // (Depth 3)
@@ -74,33 +275,6 @@
                     color: $color-primary;
                 }
 
-                @media (max-width: $breakpoint-lg) {
-                    justify-content: center;
-
-                    &:hover {
-                        &::after {
-                            content: attr(data-label);
-                            position: absolute;
-                            left: 110%;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            white-space: nowrap;
-                            background: $color-primary;
-                            color: $color-text;
-                            padding: $spacing-sm;
-                            border-radius: $radius-sm;
-                            font-size: $font-size-sm;
-                            opacity: 1;
-                            pointer-events: none;
-                            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-                            z-index: 10;
-                        }
-                    }
-
-                    span {
-                        display: none;
-                    }
-                }
             }
 
         }
@@ -131,5 +305,14 @@
             }
         }
     }
+}
 
+// ============================================
+// Keyframes
+// ============================================
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }

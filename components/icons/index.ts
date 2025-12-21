@@ -8,3 +8,7 @@ export { Apple } from './Apple';
 export { Facebook } from './Facebook';
 export { Google } from './Google';
 export { PeopleCircle } from './PeopleCircle';
+export { List } from './List';
+export { ChevronRight } from './ChevronRight';
+export { X } from './X';
+export { Aurorah } from './Aurorah';

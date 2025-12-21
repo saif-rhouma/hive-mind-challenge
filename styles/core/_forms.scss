@@ -4,7 +4,7 @@
 .form {
     @extend %flex-center;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: $spacing-xs;
     padding: $spacing-md 0;
     width: 100%;
 

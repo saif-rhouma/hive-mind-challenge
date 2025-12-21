@@ -11,10 +11,11 @@
         background: rgba($color-card, 1);
         border: 1px solid rgba($color-border, 0.7);
         border-radius: $radius-sx;
-        padding: $spacing-sm-md $spacing-sm-md 6px $spacing-sm-md; // ! this should change!!!
+        padding: $spacing-sm-md $spacing-sm-md 6px $spacing-sm-md;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: inline-block;
         outline: none;
+        font-size: $font-size-sm;
         backdrop-filter: blur(10px);
 
         &::placeholder {
@@ -58,5 +59,28 @@
         pointer-events: none;
         transform-origin: left top;
 
+        &.required::after {
+            content: " *";
+        }
+    }
+
+    .errorText {
+        height: 12px;
+        font-size: $font-size-xs;
+        line-height: 12px;
+        color: $color-error;
+    }
+
+    &.hasError {
+        input {
+            border-color: $color-error;
+            background: rgba($color-error, 0.1);
+            box-shadow: 0 8px 25px rgba($color-error, 0.2);
+        }
+
+        label {
+            color: $color-error;
+            transform: translateY(-10px) scale(0.7);
+        }
     }
 }

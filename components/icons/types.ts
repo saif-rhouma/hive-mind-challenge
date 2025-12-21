@@ -13,4 +13,8 @@ export type IconName =
   | 'Google'
   | 'Facebook'
   | 'Apple'
+  | 'List'
+  | 'X'
+  | 'ChevronRight'
+  | 'Aurorah'
   | 'PeopleCircle';
